@@ -185,7 +185,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6">
+    <!-- <div class="col-md-6">
         <div class="card shadow mb-4">
             <div class="card-header bg-success py-3">
                 <h6 class="m-0 font-weight-bold text-white text-center">Transaksi Barang Masuk</h6>
@@ -211,8 +211,8 @@
                 </table>
             </div>
         </div>
-    </div>
-    <!-- <div class="col-md-4">
+    </div> -->
+    <div class="col-md-6">
         <div class="card shadow mb-4">
             <div class="card-header bg-danger py-3">
                 <h6 class="m-0 font-weight-bold text-white text-center">Transaksi Barang Keluar</h6>
@@ -242,7 +242,7 @@
                 </table>
             </div>
         </div>
-    </div> -->
+    </div>
 </div>
 
 <!-- <div class="row">
