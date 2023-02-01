@@ -16,7 +16,7 @@ function is_admin()
 
     $status = true;
 
-    if ($role != 'admin') {
+    if ($role != 'owner') {
         $status = false;
     }
 
@@ -30,7 +30,7 @@ function is_owner()
 
     $status = true;
 
-    if ($role != 'owner') {
+    if ($role != 'admin') {
         $status = false;
     }
 
