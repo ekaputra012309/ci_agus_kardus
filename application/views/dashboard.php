@@ -166,7 +166,7 @@
                             foreach ($barang_min as $b) :
                                 ?>
                                 <tr>
-                                    <td align="left"><?= $b['nama_barang']; ?></td>
+                                    <td align="center"><?= $b['nama_barang']; ?></td>
                                     <td><?= $b['stok'] ." ". $b['nama_satuan']; ?></td>
                                     <!-- <td>
                                         <a href="<?= base_url('barangmasuk/add/') . $b['id_barang'] ?>" class="btn btn-warning btn-sm"><i class="fa fa-plus"></i></a>
