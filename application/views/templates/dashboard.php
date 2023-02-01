@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title><?= $title; ?> | Aplikasi Stok Barang Sk.Sejahtera</title>
+    <title><?= $title; ?> | SUPLIER DAN DISTRIBUTOR</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url(); ?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -46,7 +46,7 @@
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-university"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Aplikasi Stok Barang Sk.Sejahtera</div>
+                <div class="sidebar-brand-text mx-3">DASHBOARD SUPLIER DAN DISTRIBUTOR</div>
             </a>
 
             <!-- Nav Item - Dashboard -->
@@ -57,7 +57,8 @@
                 </a>
             </li>
 
-            <?php if (is_owner() || is_admin() || is_gudang()) : ?>
+            <?php if (is_admin() || is_owner()): ?>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -89,7 +90,9 @@
                     </div>
                 </div>
             </li>
-        <?php endif; ?>
+        <?php endif ?>
+
+        <?php if (is_admin() || is_gudang()): ?>
 
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -122,7 +125,9 @@
                 <span>Barang West</span>
             </a>
         </li>
+    <?php endif ?>
 
+    <?php if (is_admin()): ?>
 
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -139,113 +144,115 @@
             </a>
         </li>
 
-        <?php if (is_admin()) : ?>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Settings
-            </div>
-
-            <!-- Nav Item -->
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('user'); ?>">
-                    <i class="fas fa-fw fa-user-plus"></i>
-                    <span>User Management</span>
-                </a>
-            </li>
-        <?php endif; ?>
 
         <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
+        <hr class="sidebar-divider">
 
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Settings
         </div>
 
-    </ul>
-    <!-- End of Sidebar -->
+        <!-- Nav Item -->
+        <li class="nav-item">
+            <a class="nav-link" href="<?= base_url('user'); ?>">
+                <i class="fas fa-fw fa-user-plus"></i>
+                <span>User Management</span>
+            </a>
+        </li>
+    <?php endif ?>
 
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
 
-        <!-- Main Content -->
-        <div id="content">
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
 
-            <!-- Topbar -->
-            <nav class="navbar navbar-expand navbar-dark bg-primary topbar mb-4 static-top shadow-sm">
+</ul>
+<!-- End of Sidebar -->
 
-                <!-- Sidebar Toggle (Topbar) -->
-                <button id="sidebarToggleTop" class="btn btn-link bg-transparent d-md-none rounded-circle mr-3">
-                    <i class="fa fa-bars text-white"></i>
-                </button>
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
 
-                <!-- Topbar Navbar -->
-                <ul class="navbar-nav ml-auto">
+    <!-- Main Content -->
+    <div id="content">
 
-                    <!-- Nav Item - User Information -->
-                    <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline small text-capitalize">
-                                <?= userdata('nama'); ?>
-                            </span>
-                            <img class="img-profile rounded-circle" src="<?= base_url() ?>assets/img/avatar/<?= userdata('foto'); ?>">
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-dark bg-primary topbar mb-4 static-top shadow-sm">
+
+            <!-- Sidebar Toggle (Topbar) -->
+            <button id="sidebarToggleTop" class="btn btn-link bg-transparent d-md-none rounded-circle mr-3">
+                <i class="fa fa-bars text-white"></i>
+            </button>
+
+            <!-- Topbar Navbar -->
+            <ul class="navbar-nav ml-auto">
+
+                <!-- Nav Item - User Information -->
+                <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="mr-2 d-none d-lg-inline small text-capitalize">
+                            <?= userdata('nama'); ?>
+                        </span>
+                        <img class="img-profile rounded-circle" src="<?= base_url() ?>assets/img/avatar/<?= userdata('foto'); ?>">
+                    </a>
+                    <!-- Dropdown - User Information -->
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="<?= base_url('profile'); ?>">
+                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Profile
                         </a>
-                        <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="<?= base_url('profile'); ?>">
-                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Profile
-                            </a>
-                            <a class="dropdown-item" href="<?= base_url('profile/setting'); ?>">
-                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Settings
-                            </a>
-                            <a class="dropdown-item" href="<?= base_url('profile/ubahpassword'); ?>">
-                                <i class="fas fa-lock fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Change Password
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Logout
-                            </a>
-                        </div>
-                    </li>
+                        <a class="dropdown-item" href="<?= base_url('profile/setting'); ?>">
+                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Settings
+                        </a>
+                        <a class="dropdown-item" href="<?= base_url('profile/ubahpassword'); ?>">
+                            <i class="fas fa-lock fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Change Password
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Logout
+                        </a>
+                    </div>
+                </li>
 
-                </ul>
+            </ul>
 
-            </nav>
-            <!-- End of Topbar -->
+        </nav>
+        <!-- End of Topbar -->
 
-            <!-- Begin Page Content -->
-            <div class="container-fluid">
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
 
-                <!-- Page Heading -->
-                <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+            <!-- Page Heading -->
+            <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
-                <?= $contents; ?>
-
-            </div>
-            <!-- /.container-fluid -->
+            <?= $contents; ?>
 
         </div>
-        <!-- End of Main Content -->
-
-        <!-- Footer -->
-        <footer class="sticky-footer bg-light">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Aplikasi Stok Barang Sk.Sejahtera 2022 &bull; by <?= anchor('https://www.agusjokopriyanto.id', 'agusjokopriyanto.id'); ?></span>
-                </div>
-            </div>
-        </footer>
-        <!-- End of Footer -->
+        <!-- /.container-fluid -->
 
     </div>
-    <!-- End of Content Wrapper -->
+    <!-- End of Main Content -->
+
+    <!-- Footer -->
+    <footer class="sticky-footer bg-light">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; Aplikasi Stok Barang Sk.Sejahtera 2022 &bull;
+                    <!-- by <?= anchor('https://www.agusjokopriyanto.id', 'agusjokopriyanto.id'); ?> -->
+                </span>
+            </div>
+        </div>
+    </footer>
+    <!-- End of Footer -->
+
+</div>
+<!-- End of Content Wrapper -->
 
 </div>
 <!-- End of Page Wrapper -->
@@ -343,9 +350,9 @@
             "<'row'<'col-md-12'tr>>" +
             "<'row px-2 px-md-4 py-3'<'col-md-5'i><'col-md-7'p>>",
             lengthMenu: [
-            [5, 10, 25, 50, 100, -1],
-            [5, 10, 25, 50, 100, "All"]
-            ],
+                [5, 10, 25, 50, 100, -1],
+                [5, 10, 25, 50, 100, "All"]
+                ],
             columnDefs: [{
                 targets: -1,
                 orderable: false,
@@ -381,36 +388,36 @@
         //     total.val(Number(totalStok));
         // });
 
-        $(document).on('keyup', '#jumlah_keluar', function() {
-            let totalStok = parseInt(stok.val()) - parseInt(this.value);
-            total.val(Number(totalStok));
-        });
+    $(document).on('keyup', '#jumlah_keluar', function() {
+        let totalStok = parseInt(stok.val()) - parseInt(this.value);
+        total.val(Number(totalStok));
+    });
 
-        $(document).on('keyup', '#jumlah_kardus', function() {
-            let totalStok = parseInt(stok.val()) - parseInt(this.value);
-            total.val(Number(totalStok));
-        });
+    $(document).on('keyup', '#jumlah_kardus', function() {
+        let totalStok = parseInt(stok.val()) - parseInt(this.value);
+        total.val(Number(totalStok));
+    });
 
-        $(document).on('keyup', '#qty_pcs', function() {
-            let totalStok = parseInt(stok.val()) - parseInt(this.value);
-            total.val(Number(totalStok));
-        });
+    $(document).on('keyup', '#qty_pcs', function() {
+        let totalStok = parseInt(stok.val()) - parseInt(this.value);
+        total.val(Number(totalStok));
+    });
 
         // ukuran key up
-        $(document).on('keyup', '#panjang', function() {
-            ukuran.val(this.value);
-        });
-        $(document).on('keyup', '#lebar', function() {
-            let pj = $("#panjang").val();
-            ukuran.val(pj+':'+this.value);
-        });
-        $(document).on('keyup', '#berat', function() {
-            let pj = $("#panjang").val();
-            let lb = $("#lebar").val();
-            ukuran.val(pj+':'+lb+':'+this.value);
-        });
+    $(document).on('keyup', '#panjang', function() {
+        ukuran.val(this.value);
+    });
+    $(document).on('keyup', '#lebar', function() {
+        let pj = $("#panjang").val();
+        ukuran.val(pj+':'+this.value);
+    });
+    $(document).on('keyup', '#berat', function() {
+        let pj = $("#panjang").val();
+        let lb = $("#lebar").val();
+        ukuran.val(pj+':'+lb+':'+this.value);
+    });
 
-        $(document).on('change', '#satuan_m', function() {
+    $(document).on('change', '#satuan_m', function() {
             // let jmlm = $('#qty_pcs').val();
             // let qtym = $('#jumlah_masuk');
             // if (this.value==3 || this.value==3) {
@@ -427,178 +434,178 @@
             //     qtym.val(parseInt(jmlm/10));
             // }
             // hargam.focus();
-            $("#panjang").focus();
-        });
-    </script>
+        $("#panjang").focus();
+    });
+</script>
 
-    <?php if ($this->uri->segment(1) == 'dashboard') : ?>
-        <!-- Chart -->
-        <script src="<?= base_url(); ?>assets/vendor/chart.js/Chart.min.js"></script>
+<?php if ($this->uri->segment(1) == 'dashboard') : ?>
+    <!-- Chart -->
+    <script src="<?= base_url(); ?>assets/vendor/chart.js/Chart.min.js"></script>
 
-        <script type="text/javascript">
+    <script type="text/javascript">
             // Set new default font family and font color to mimic Bootstrap's default styling
-            Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-            Chart.defaults.global.defaultFontColor = '#858796';
+        Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+        Chart.defaults.global.defaultFontColor = '#858796';
 
-            function number_format(number, decimals, dec_point, thousands_sep) {
+        function number_format(number, decimals, dec_point, thousands_sep) {
                 // *     example: number_format(1234.56, 2, ',', ' ');
                 // *     return: '1 234,56'
-                number = (number + '').replace(',', '').replace(' ', '');
-                var n = !isFinite(+number) ? 0 : +number,
-                prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-                sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-                dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-                s = '',
-                toFixedFix = function(n, prec) {
-                    var k = Math.pow(10, prec);
-                    return '' + Math.round(n * k) / k;
-                };
+            number = (number + '').replace(',', '').replace(' ', '');
+            var n = !isFinite(+number) ? 0 : +number,
+            prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+            sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+            dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+            s = '',
+            toFixedFix = function(n, prec) {
+                var k = Math.pow(10, prec);
+                return '' + Math.round(n * k) / k;
+            };
                 // Fix for IE parseFloat(0.55).toFixed(0) = 0;
-                s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
-                if (s[0].length > 3) {
-                    s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
-                }
-                if ((s[1] || '').length < prec) {
-                    s[1] = s[1] || '';
-                    s[1] += new Array(prec - s[1].length + 1).join('0');
-                }
-                return s.join(dec);
+            s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+            if (s[0].length > 3) {
+                s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
             }
+            if ((s[1] || '').length < prec) {
+                s[1] = s[1] || '';
+                s[1] += new Array(prec - s[1].length + 1).join('0');
+            }
+            return s.join(dec);
+        }
 
             // Area Chart Example
-            var ctx = document.getElementById("myAreaChart");
-            var myLineChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
-                    datasets: [{
-                        label: "Total Barang Masuk",
-                        lineTension: 0.3,
-                        backgroundColor: "rgba(78, 115, 223, 0.05)",
-                        borderColor: "rgba(78, 115, 223, 1)",
-                        pointRadius: 3,
-                        pointBackgroundColor: "rgba(78, 115, 223, 1)",
-                        pointBorderColor: "rgba(78, 115, 223, 1)",
-                        pointHoverRadius: 3,
-                        pointHoverBackgroundColor: "#5a5c69",
-                        pointHoverBorderColor: "#5a5c69",
-                        pointHitRadius: 10,
-                        pointBorderWidth: 2,
-                        data: <?= json_encode($cbm); ?>,
-                    },
-                    {
-                        label: "Total Barang Keluar",
-                        lineTension: 0.3,
-                        backgroundColor: "rgba(231, 74, 59, 0.05)",
-                        borderColor: "#e74a3b",
-                        pointRadius: 3,
-                        pointBackgroundColor: "#e74a3b",
-                        pointBorderColor: "#e74a3b",
-                        pointHoverRadius: 3,
-                        pointHoverBackgroundColor: "#5a5c69",
-                        pointHoverBorderColor: "#5a5c69",
-                        pointHitRadius: 10,
-                        pointBorderWidth: 2,
-                        data: <?= json_encode($cbk); ?>,
-                    }
-                    ],
+        var ctx = document.getElementById("myAreaChart");
+        var myLineChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
+                datasets: [{
+                    label: "Total Barang Masuk",
+                    lineTension: 0.3,
+                    backgroundColor: "rgba(78, 115, 223, 0.05)",
+                    borderColor: "rgba(78, 115, 223, 1)",
+                    pointRadius: 3,
+                    pointBackgroundColor: "rgba(78, 115, 223, 1)",
+                    pointBorderColor: "rgba(78, 115, 223, 1)",
+                    pointHoverRadius: 3,
+                    pointHoverBackgroundColor: "#5a5c69",
+                    pointHoverBorderColor: "#5a5c69",
+                    pointHitRadius: 10,
+                    pointBorderWidth: 2,
+                    data: <?= json_encode($cbm); ?>,
                 },
-                options: {
-                    maintainAspectRatio: false,
-                    layout: {
-                        padding: 5
-                    },
-                    scales: {
-                        xAxes: [{
-                            time: {
-                                unit: 'date'
-                            },
-                            gridLines: {
-                                display: false,
-                                drawBorder: false
-                            },
-                            ticks: {
-                                maxTicksLimit: 7
-                            }
-                        }],
-                        yAxes: [{
-                            ticks: {
-                                maxTicksLimit: 5,
-                                padding: 10,
+                {
+                    label: "Total Barang Keluar",
+                    lineTension: 0.3,
+                    backgroundColor: "rgba(231, 74, 59, 0.05)",
+                    borderColor: "#e74a3b",
+                    pointRadius: 3,
+                    pointBackgroundColor: "#e74a3b",
+                    pointBorderColor: "#e74a3b",
+                    pointHoverRadius: 3,
+                    pointHoverBackgroundColor: "#5a5c69",
+                    pointHoverBorderColor: "#5a5c69",
+                    pointHitRadius: 10,
+                    pointBorderWidth: 2,
+                    data: <?= json_encode($cbk); ?>,
+                }
+                ],
+            },
+            options: {
+                maintainAspectRatio: false,
+                layout: {
+                    padding: 5
+                },
+                scales: {
+                    xAxes: [{
+                        time: {
+                            unit: 'date'
+                        },
+                        gridLines: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            maxTicksLimit: 7
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            maxTicksLimit: 5,
+                            padding: 10,
                                 // Include a dollar sign in the ticks
-                                callback: function(value, index, values) {
-                                    return number_format(value);
-                                }
-                            },
-                            gridLines: {
-                                color: "rgb(234, 236, 244)",
-                                zeroLineColor: "rgb(234, 236, 244)",
-                                drawBorder: false,
-                                borderDash: [2],
-                                zeroLineBorderDash: [2]
+                            callback: function(value, index, values) {
+                                return number_format(value);
                             }
-                        }],
-                    },
-                    legend: {
-                        display: false
-                    },
-                    tooltips: {
-                        backgroundColor: "rgb(255,255,255)",
-                        bodyFontColor: "#858796",
-                        titleMarginBottom: 10,
-                        titleFontColor: '#6e707e',
-                        titleFontSize: 14,
-                        borderColor: '#dddfeb',
-                        borderWidth: 1,
-                        xPadding: 15,
-                        yPadding: 15,
-                        displayColors: false,
-                        intersect: false,
-                        mode: 'index',
-                        caretPadding: 10,
-                        callbacks: {
-                            label: function(tooltipItem, chart) {
-                                var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                                return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
-                            }
+                        },
+                        gridLines: {
+                            color: "rgb(234, 236, 244)",
+                            zeroLineColor: "rgb(234, 236, 244)",
+                            drawBorder: false,
+                            borderDash: [2],
+                            zeroLineBorderDash: [2]
+                        }
+                    }],
+                },
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    backgroundColor: "rgb(255,255,255)",
+                    bodyFontColor: "#858796",
+                    titleMarginBottom: 10,
+                    titleFontColor: '#6e707e',
+                    titleFontSize: 14,
+                    borderColor: '#dddfeb',
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    intersect: false,
+                    mode: 'index',
+                    caretPadding: 10,
+                    callbacks: {
+                        label: function(tooltipItem, chart) {
+                            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                            return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
                         }
                     }
                 }
-            });
+            }
+        });
 
             // Pie Chart Example
-            var ctx = document.getElementById("myPieChart");
-            var myPieChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ["Barang Masuk", "Barang Keluar"],
-                    datasets: [{
-                        data: [<?= $barang_masuk; ?>, <?= $barang_keluar; ?>],
-                        backgroundColor: ['#4e73df', '#e74a3b'],
-                        hoverBackgroundColor: ['#5a5c69', '#5a5c69'],
-                        hoverBorderColor: "rgba(234, 236, 244, 1)",
-                    }],
+        var ctx = document.getElementById("myPieChart");
+        var myPieChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ["Barang Masuk", "Barang Keluar"],
+                datasets: [{
+                    data: [<?= $barang_masuk; ?>, <?= $barang_keluar; ?>],
+                    backgroundColor: ['#4e73df', '#e74a3b'],
+                    hoverBackgroundColor: ['#5a5c69', '#5a5c69'],
+                    hoverBorderColor: "rgba(234, 236, 244, 1)",
+                }],
+            },
+            options: {
+                maintainAspectRatio: false,
+                tooltips: {
+                    backgroundColor: "rgb(255,255,255)",
+                    bodyFontColor: "#858796",
+                    borderColor: '#dddfeb',
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    caretPadding: 10,
                 },
-                options: {
-                    maintainAspectRatio: false,
-                    tooltips: {
-                        backgroundColor: "rgb(255,255,255)",
-                        bodyFontColor: "#858796",
-                        borderColor: '#dddfeb',
-                        borderWidth: 1,
-                        xPadding: 15,
-                        yPadding: 15,
-                        displayColors: false,
-                        caretPadding: 10,
-                    },
-                    legend: {
-                        display: false
-                    },
-                    cutoutPercentage: 80,
+                legend: {
+                    display: false
                 },
-            });
-        </script>
-    <?php endif; ?>
+                cutoutPercentage: 80,
+            },
+        });
+    </script>
+<?php endif; ?>
 </body>
 
 </html>
